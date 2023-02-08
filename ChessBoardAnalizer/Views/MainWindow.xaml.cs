@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChessBoardAnalizer
+namespace ChessBoardAnalizer.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
