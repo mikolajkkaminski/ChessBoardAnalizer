@@ -29,5 +29,6 @@
         </Grid.RowDefinitions>
         <Rectangle Grid.Column="0" Grid.Row="0" Fill="Azure"/>
         <Rectangle Grid.Column="1" Grid.Row="0" Fill="LightSlateGray"/>
+        <TextBlock Text="{Binding chessBoard.Piecs[0].name}"/>
     </Grid>
 </Window>

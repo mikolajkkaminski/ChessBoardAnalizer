@@ -1,7 +1,15 @@
-﻿namespace ChessBoardAnalizer.Models
+﻿using System.Collections.Generic;
+
+namespace ChessBoardAnalizer.Models
 {
     public class Board
     {
-        public Square[,] board = new Square[8, 8];
+        public List<Piece> pieces = new();
+        public Board()
+        {
+            Piece queen = new Piece(PieceType.Queen, 0, 0);
+            pieces.Add(queen);
+        }
+
     }
 }

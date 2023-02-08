@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ChessBoardAnalizer.Models;
 
 namespace ChessBoardAnalizer.ViewModels
 {
-    internal class ChessBoardViewModel
+    public class ChessBoardViewModel: ViewModelBase
     {
+        public Board board = new();
+        public ChessBoardViewModel()
+        {
+            Piece Queen = new Piece(PieceType.Queen, 0, 0);
+            board.pieces.Add(Queen);
+        }
     }
 }
