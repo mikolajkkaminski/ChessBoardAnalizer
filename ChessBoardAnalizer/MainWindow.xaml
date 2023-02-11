@@ -6,29 +6,10 @@
         xmlns:local="clr-namespace:ChessBoardAnalizer"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
+    <!--<Window.Resources>
+    </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Rectangle Grid.Column="0" Grid.Row="0" Fill="Azure"/>
-        <Rectangle Grid.Column="1" Grid.Row="0" Fill="LightSlateGray"/>
-        <TextBlock Text="{Binding chessBoard.Piecs[0].name}"/>
-    </Grid>
+        <Rectangle x:Name="WhiteSquare" Grid.Column="0" Grid.Row="0" Fill="Azure"/>
+        <Rectangle x:Name="BlackSquare" Grid.Row="0" Fill="LightSlateGray"/>
+    </Grid>-->
 </Window>
