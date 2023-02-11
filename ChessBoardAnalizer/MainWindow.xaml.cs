@@ -13,47 +13,29 @@ namespace ChessBoardAnalizer
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ChessBoardViewModel viewModel;
+        private ChessBoardViewModel viewModel = new();
+        private Grid grid = new();
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new();
             InitializeGrid();
-            //TestComponetReusability();
-        }
-
-        private void TestComponetReusability()
-        {
-            Grid grid = new Grid();
-
-            foreach (var i in Enumerable.Range(0, 8))
-            {
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-            Content = grid;
+            var label = new Label { Content = "Qu" };
+            label.VerticalAlignment = VerticalAlignment.Center;
+            label.HorizontalAlignment = HorizontalAlignment.Center;
+            label.BorderThickness = new Thickness(2);
+            label.BorderBrush = Brushes.BlanchedAlmond;
+            Grid.SetColumn(label, 4);
+            Grid.SetRow(label, 0);
+            grid.Children.Add(label);
         }
 
         private void InitializeGrid()
         {
-            Grid grid = new Grid();
-
             foreach (var i in Enumerable.Range(0, 8))
             {
                 grid.RowDefinitions.Add(new RowDefinition());
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-            //var white = new Rectangle { Fill = new SolidColorBrush(Colors.Azure) };
-
-            //Grid.SetColumn(white, 0);
-            //Grid.SetRow(white, 0);
-            //grid.Children.Add(white);
-
-            //var black = new Rectangle { Fill = new SolidColorBrush(Colors.Azure) };
-
-            //Grid.SetColumn(black, 0);
-            //Grid.SetRow(black, 0);
-            //grid.Children.Add(black);
 
             int file = 0;
             int rank = 0;
