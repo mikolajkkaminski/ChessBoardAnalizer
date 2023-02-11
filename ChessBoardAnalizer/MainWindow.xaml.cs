@@ -1,7 +1,7 @@
 ﻿using ChessBoardAnalizer.ViewModels;
 using System.Windows;
 
-namespace ChessBoardAnalizer.Views
+namespace ChessBoardAnalizer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
