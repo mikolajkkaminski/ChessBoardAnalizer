@@ -1,4 +1,5 @@
-﻿using ChessBoardAnalizer.ViewModels;
+﻿using ChessBoardAnalizer.Models;
+using ChessBoardAnalizer.ViewModels;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -21,10 +22,10 @@ namespace ChessBoardAnalizer
         {
             InitializeComponent();
             InitializeGrid();
-            //PopulateGrid();
-            //AddQueen();
+            PopulateGrid();
+            AddQueen();
             //CopyResource();
-            CopyResource2();
+            //CopyResource2();
             Content = grid;
         }
 
@@ -63,11 +64,18 @@ namespace ChessBoardAnalizer
 
         private void AddQueen()
         {
-            var label = new Label { Content = "Qu" };
+
+            Piece piece = new(PieceType.Queen, 0, 0);
+
+
+            var label = new Label();
+            label.Content = ChessBoardViewModel.PieceNameToDisplay(piece.pieceType);
             label.VerticalAlignment = VerticalAlignment.Center;
             label.HorizontalAlignment = HorizontalAlignment.Center;
-            label.BorderThickness = new Thickness(2);
-            label.BorderBrush = Brushes.BlanchedAlmond;
+            label.BorderThickness = new Thickness(3);
+            label.BorderBrush = Brushes.Black;
+            label.FontSize = 17;
+            label.FontWeight = FontWeights.Bold;
             Grid.SetColumn(label, 4);
             Grid.SetRow(label, 0);
             grid.Children.Add(label);

@@ -10,5 +10,11 @@ namespace ChessBoardAnalizer.ViewModels
             Piece Queen = new Piece(PieceType.Queen, 0, 0);
             board.pieces.Add(Queen);
         }
+
+        public static string PieceNameToDisplay(PieceType piece) => piece switch
+        {
+            PieceType.Queen => "Qu",
+            _ => ""
+        };
     }
 }
