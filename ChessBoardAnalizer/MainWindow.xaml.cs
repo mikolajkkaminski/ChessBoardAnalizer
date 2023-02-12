@@ -1,6 +1,8 @@
 ﻿using ChessBoardAnalizer.ViewModels;
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -19,6 +21,48 @@ namespace ChessBoardAnalizer
         {
             InitializeComponent();
             InitializeGrid();
+            //PopulateGrid();
+            //AddQueen();
+            //CopyResource();
+            CopyResource2();
+            Content = grid;
+        }
+
+        private void CopyResource2()
+        {
+            var rect = (Rectangle)FindResource("BlackSquare");
+            var newRect = new Rectangle();
+            newRect.Fill = rect.Fill;
+
+            Grid.SetColumn(newRect, 0);
+            Grid.SetRow(newRect, 0);
+            grid.Children.Add(newRect);
+        }
+
+        private void CopyResource()
+        {
+            var rect = (Rectangle)FindResource("WhiteSquare");
+            Grid.SetColumn(rect, 0);
+            Grid.SetRow(rect, 0);
+            grid.Children.Add(rect);
+
+            var newRectangle = new Rectangle();
+            PropertyInfo[] properties = typeof(Rectangle).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.CanRead && property.CanWrite)
+                {
+                    property.SetValue(newRectangle, property.GetValue(rect));
+                }
+            }
+
+            Grid.SetColumn(newRectangle, 1);
+            Grid.SetRow(newRectangle, 0);
+            grid.Children.Add(newRectangle);
+        }
+
+        private void AddQueen()
+        {
             var label = new Label { Content = "Qu" };
             label.VerticalAlignment = VerticalAlignment.Center;
             label.HorizontalAlignment = HorizontalAlignment.Center;
@@ -36,7 +80,10 @@ namespace ChessBoardAnalizer
                 grid.RowDefinitions.Add(new RowDefinition());
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
+        }
+        
+        private void PopulateGrid()
+        {
             int file = 0;
             int rank = 0;
             var white = new SolidColorBrush(Colors.Azure);
@@ -62,7 +109,6 @@ namespace ChessBoardAnalizer
                     file++;
                 }
             }
-            Content = grid;
         }
     }
 }
