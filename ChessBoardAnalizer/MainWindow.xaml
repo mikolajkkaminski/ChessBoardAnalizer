@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:ChessBoardAnalizer"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
-    <!--<Window.Resources>
+    <Window.Resources>
+        <Rectangle x:Key="WhiteSquare" Grid.Column="0" Grid.Row="0" Fill="Azure"/>
+        <Rectangle x:Key="BlackSquare" Grid.Row="0" Fill="LightSlateGray"/>
     </Window.Resources>
-    <Grid>
-        <Rectangle x:Name="WhiteSquare" Grid.Column="0" Grid.Row="0" Fill="Azure"/>
-        <Rectangle x:Name="BlackSquare" Grid.Row="0" Fill="LightSlateGray"/>
-    </Grid>-->
 </Window>
