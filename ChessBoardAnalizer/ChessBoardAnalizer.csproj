@@ -7,4 +7,36 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\ChessPiecesBlack\Bishop.png" />
+    <None Remove="Assets\ChessPiecesBlack\King.png" />
+    <None Remove="Assets\ChessPiecesBlack\Knight.png" />
+    <None Remove="Assets\ChessPiecesBlack\Pawn.png" />
+    <None Remove="Assets\ChessPiecesBlack\Queen.png" />
+    <None Remove="Assets\ChessPiecesBlack\Rook.png" />
+    <None Remove="Assets\ChessPiecesWhite\Bishop.png" />
+    <None Remove="Assets\ChessPiecesWhite\King.png" />
+    <None Remove="Assets\ChessPiecesWhite\Knight.png" />
+    <None Remove="Assets\ChessPiecesWhite\Pawn.png" />
+    <None Remove="Assets\ChessPiecesWhite\Queen.png" />
+    <None Remove="Assets\ChessPiecesWhite\Rook.png" />
+    <None Remove="Assets\marble-gee9332a34_1920.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\ChessPiecesBlack\Bishop.png" />
+    <Resource Include="Assets\ChessPiecesBlack\King.png" />
+    <Resource Include="Assets\ChessPiecesBlack\Knight.png" />
+    <Resource Include="Assets\ChessPiecesBlack\Pawn.png" />
+    <Resource Include="Assets\ChessPiecesBlack\Queen.png" />
+    <Resource Include="Assets\ChessPiecesBlack\Rook.png" />
+    <Resource Include="Assets\ChessPiecesWhite\Bishop.png" />
+    <Resource Include="Assets\ChessPiecesWhite\King.png" />
+    <Resource Include="Assets\ChessPiecesWhite\Knight.png" />
+    <Resource Include="Assets\ChessPiecesWhite\Pawn.png" />
+    <Resource Include="Assets\ChessPiecesWhite\Queen.png" />
+    <Resource Include="Assets\ChessPiecesWhite\Rook.png" />
+    <Resource Include="Assets\marble-gee9332a34_1920.jpg" />
+  </ItemGroup>
+
 </Project>

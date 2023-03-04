@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Controls;
-using System.Windows.Media.Media3D;
+﻿using System.Collections.Generic;
 
 namespace ChessBoardAnalizer.Models
 {
@@ -9,26 +6,26 @@ namespace ChessBoardAnalizer.Models
     {
         public Board()
         {
-            Piece queen = new Piece(PieceType.Queen, 0, 0);
-            pieces.Add(queen);
-            AddSquaresToBoard();
+            Piece queen = new Piece(PieceColor.White, PieceType.Queen, 0, 0);
+            Pieces.Add(queen);
+            DistriburteSquareColors();
         }
 
-        public List<Piece> pieces { get; set; } = new();
-        public Square[,] squares { get; set; } = new Square[8, 8];
+        public List<Piece> Pieces { get; set; } = new();
+        public Square[,] Squares { get; set; } = new Square[8, 8];
 
-        private void AddSquaresToBoard()
+        private void DistriburteSquareColors()
         {
             int file = 0;
             int rank = 0;
 
             while (file <= 7 && rank <= 7)
             {
-                squares[file, rank] = new();
-                squares[file, rank].WhiteOrBlack = 
+                Squares[file, rank] = new();
+                Squares[file, rank].squareColor = 
                     (file % 2 == 0 && rank % 2 == 0) ||
                     (file % 2 == 1 && rank % 2 == 1)
-                    ? true : false;
+                    ? SquareColor.Dark : SquareColor.Light;
 
                 if (file == 7)
                 {
@@ -45,7 +42,11 @@ namespace ChessBoardAnalizer.Models
 
     public class Square
     {
-        public bool WhiteOrBlack { get; set; }
+        public SquareColor squareColor { get; set; }
         public Piece? Occupation { get; set; }
+    }
+
+    public enum SquareColor {
+        Light, Dark
     }
 }

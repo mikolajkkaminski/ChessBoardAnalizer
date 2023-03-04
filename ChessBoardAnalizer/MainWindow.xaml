@@ -1,13 +1,22 @@
 ﻿<Window x:Class="ChessBoardAnalizer.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ChessBoardAnalizer"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600">
-    <Window.Resources>
-        <Rectangle x:Key="WhiteSquare" Fill="Azure"/>
-        <Rectangle x:Key="BlackSquare" Fill="LightSlateGray"/>
-    </Window.Resources>
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:ChessBoardAnalizer"
+    xmlns:components="clr-namespace:ChessBoardAnalizer.Components"
+    Title="MainWindow" 
+    WindowStartupLocation="CenterScreen" 
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight">
+    <Grid x:Name="board"
+        Height="900" Width="900">
+        <Image Source="pack://application:,,,/ChessBoardAnalizer;component/Assets/marble-gee9332a34_1920.jpg"
+        Stretch="UniformToFill"
+        Opacity="0.08"
+        Grid.ColumnSpan="8"
+        Grid.RowSpan="8"
+        Grid.ZIndex="2"/>
+    </Grid>
 </Window>
+<!--add top bar height to window height-->

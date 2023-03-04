@@ -1,9 +1,8 @@
-﻿using ChessBoardAnalizer.Models;
+﻿using ChessBoardAnalizer.Components;
+using ChessBoardAnalizer.Models;
 using ChessBoardAnalizer.ViewModels;
 using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -17,104 +16,63 @@ namespace ChessBoardAnalizer
     public partial class MainWindow : Window
     {
         private ChessBoardViewModel viewModel = new();
-        private Grid grid = new();
+        //private Grid panel = new();
         public MainWindow()
         {
             InitializeComponent();
+            Drawing();
+        }
+
+        private void Drawing() {
             InitializeGrid();
-            PopulateGrid();
-            AddQueen();
-            //CopyResource();
-            //CopyResource2();
-            Content = grid;
+            DrawBoard();
+            PiecesStartGamePositions();
         }
 
-        private void CopyResource2()
+        private void PiecesStartGamePositions()
         {
-            var rect = (Rectangle)FindResource("BlackSquare");
-            var newRect = new Rectangle();
-            newRect.Fill = rect.Fill;
+            DrawPiece(PieceColor.White, PieceType.Queen, 3, 6);
+            DrawPiece(PieceColor.White, PieceType.King, 7, 4);
+            DrawPiece(PieceColor.Black, PieceType.Knight, 2, 4);
+            DrawPiece(PieceColor.White, PieceType.Rook, 2, 4);
+            DrawPiece(PieceColor.Black, PieceType.Bishop, 1, 3);
+            DrawPiece(PieceColor.White, PieceType.Pawn, 1, 7);
+            DrawPiece(PieceColor.Black, PieceType.Pawn, 2, 7);
 
-            Grid.SetColumn(newRect, 0);
-            Grid.SetRow(newRect, 0);
-            grid.Children.Add(newRect);
         }
 
-        private void CopyResource()
+        private void DrawPiece(PieceColor pieceColor, PieceType pieceType, int rank, int file)
         {
-            var rect = (Rectangle)FindResource("WhiteSquare");
-            Grid.SetColumn(rect, 0);
-            Grid.SetRow(rect, 0);
-            grid.Children.Add(rect);
-
-            var newRectangle = new Rectangle();
-            PropertyInfo[] properties = typeof(Rectangle).GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.CanRead && property.CanWrite)
-                {
-                    property.SetValue(newRectangle, property.GetValue(rect));
-                }
-            }
-
-            Grid.SetColumn(newRectangle, 1);
-            Grid.SetRow(newRectangle, 0);
-            grid.Children.Add(newRectangle);
-        }
-
-        private void AddQueen()
-        {
-
-            Piece piece = new(PieceType.Queen, 0, 0);
-
-
-            var label = new Label();
-            label.Content = ChessBoardViewModel.PieceNameToDisplay(piece.pieceType);
-            label.VerticalAlignment = VerticalAlignment.Center;
-            label.HorizontalAlignment = HorizontalAlignment.Center;
-            label.BorderThickness = new Thickness(3);
-            label.BorderBrush = Brushes.Black;
-            label.FontSize = 17;
-            label.FontWeight = FontWeights.Bold;
-            Grid.SetColumn(label, 4);
-            Grid.SetRow(label, 0);
-            grid.Children.Add(label);
+            var piece = new PieceView(pieceColor, pieceType);
+            Grid.SetColumn(piece, file);
+            Grid.SetRow(piece, rank);
+            board.Children.Add(piece);
         }
 
         private void InitializeGrid()
-        {
+        {   
             foreach (var i in Enumerable.Range(0, 8))
             {
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                board.RowDefinitions.Add(new RowDefinition());
+                board.ColumnDefinitions.Add(new ColumnDefinition());
             }
         }
         
-        private void PopulateGrid()
+        private void DrawBoard()
         {
-            int file = 0;
-            int rank = 0;
-            var white = new SolidColorBrush(Colors.Azure);
-            var black = new SolidColorBrush(Colors.LightSlateGray);
-
-            while (file <= 7 && rank <= 7)
+            var lightSquareColor = new SolidColorBrush(Colors.Azure);
+            var darkSquareColor = new SolidColorBrush(Colors.LightSlateGray);
+            for (int rank = 0; rank < viewModel.Board.Squares.GetLength(0); rank++)
             {
-                Rectangle square = (file % 2 == 0 && rank % 2 == 0) ||
-                                   (file % 2 == 1 && rank % 2 == 1)
-                                   ? new Rectangle { Fill = white }
-                                   : new Rectangle { Fill = black };
-
-                Grid.SetColumn(square, file);
-                Grid.SetRow(square, rank);
-                grid.Children.Add(square);
-                if (file == 7)
+                for (int file = 0; file < viewModel.Board.Squares.GetLength(1); file++)
                 {
-                    file = 0;
-                    rank += 1;
-                }
-                else
-                {
-                    file++;
+                    Rectangle square = new();
+                    RenderOptions.SetBitmapScalingMode(square, BitmapScalingMode.HighQuality);
+                    //square.Fill = viewModel.Board.Squares[rank, file].LightOrDark ? lightSquareColor : darkSquareColor;
+                    square.Fill = viewModel.Board.Squares[rank, file].squareColor == SquareColor.Light ? darkSquareColor : lightSquareColor;
+                    Grid.SetRow(square, rank);
+                    Grid.SetColumn(square, file);
+                    board.Children.Add(square);
                 }
             }
         }

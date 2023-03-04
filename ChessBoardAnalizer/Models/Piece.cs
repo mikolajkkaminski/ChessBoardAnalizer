@@ -2,17 +2,18 @@
 {
     public class Piece
     {
-        public PieceType pieceType;
-        public int file;
-        public int rank;
-
-        public Piece(PieceType pieceType, int file, int rank)
+        public Piece(PieceColor pieceColor, PieceType pieceType, int file, int rank)
         {
+            this.pieceColor = pieceColor;
             this.pieceType = pieceType;
             this.file = file;
             this.rank = rank;
         }
-        public string name = "Queen";
+
+        public PieceColor pieceColor;
+        public PieceType pieceType;
+        public int file;
+        public int rank;
     }
     public enum PieceType
     {
@@ -22,5 +23,10 @@
         Rook,
         Queen,
         King
+    }
+
+    public enum PieceColor
+    {
+        White, Black
     }
 }
